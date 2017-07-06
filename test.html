@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <p>北京时间:<span id="cur"></span></p>
+  <script>
+    window.onload = function(){
+        showTime();
+    }
+    function showTime(){
+        var date = new Date();
+        var weekday = ['周日','周一','周二','周三','周四','周五','周六'];
+        var year = date.getFullYear();
+        var month = date.getMonth()+1;
+        var day = date.getDay();
+        var week = weekday[day];
+        var h = checkTime(date.getHours());
+        var m = checkTime(date.getMinutes());
+        var s = checkTime(date.getSeconds());
+        var time = year+"年"+month+'月'+day+'日'+week+" "+h+":"+m+":"+s;
+        // return time;
+        var  cur = document.getElementById('cur');
+        cur.innerHTML = time;
+        setTimeout(showTime,1000);
+      }
+      var checkTime = function(num){
+        if(num<10){
+          return '0'+num;
+        }else{
+          return num;
+        }
+      };
+      // setInterval(showTime,1000);
+
+  </script>
+</body>
+</html>
